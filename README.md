@@ -1,5 +1,5 @@
-# BT-DSA
-DSA Exercises
+
+## DSA Exercises
 * Hello there, i'm Nguyen Duc Tuan
 * My student code is 19021382
 * I'm in class INT2210 22 - 2023 
