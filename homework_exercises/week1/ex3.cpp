@@ -135,6 +135,76 @@ void quick_sort (int a[], int start, int end) {
     quick_sort(a, p + 1, end);
 }
 
+//Heap sort
+void heapify(int a[], int n, int i) {
+    int largest = i;
+
+    int l = 2 * i + 1;
+
+    int r = 2 * i + 2;
+
+    if (l < n && a[l] > a[largest]) {
+        largest = l;
+    }
+
+    if (r < n && a[r] > a[largest]) {
+        largest = r;
+    }
+
+    if (largest != i) {
+        swap(a[i], a[largest]);
+        heapify(a, n, largest);
+    }
+}
+
+void heap_sort(int a[], int n) {
+    for (int i = n/2 - 1; i >= 0; i--) {
+        heapify(a, n , i);
+    }
+
+    for (int i = n - 1; i > 0; i--) {
+        swap(a[0], a[i]);
+
+        heapify(a, i, 0);
+    }
+}
+
+//Radix sort
+int get_max(int arr[], int n)
+{
+	int max = arr[0];
+	for (int i = 1; i < n; i++)
+		if (arr[i] > max)
+			max = arr[i];
+	return max;
+}
+
+void count_sort(int arr[], int n, int exp)
+{
+	int output[n], i, count[10] = {0};
+	for (i = 0; i < n; i++)
+		count[(arr[i] / exp) % 10]++;
+	for (i = 1; i < 10; i++)
+		count[i] += count[i-1];
+ 
+	for (i = n - 1; i >= 0; i--)
+	{
+		output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+		count[(arr[i] / exp) % 10]--;
+	}
+	for (i = 0; i < n; i++)
+		arr[i] = output[i];
+}
+ 
+void radix_sort(int arr[], int n)
+{
+	int exp, m;
+	m = get_max(arr, n);
+ 
+	for (exp = 1; m/exp > 0; exp *= 10)
+		count_sort(arr, n, exp);
+}
+
 
 void printArray(int arr[], int size)
 {
@@ -144,6 +214,7 @@ void printArray(int arr[], int size)
 
 }
 
+
 int main() {
     int arr[] = {2, 1, 10, 6, 3 ,8, 7, 13, 20};
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -152,7 +223,9 @@ int main() {
     //bubble_sort(arr, n);
     //insertion_sort(arr, n);
     //merge_sort(arr, 0, n - 1);
-    quick_sort(arr, 0, n - 1);
+    //quick_sort(arr, 0, n - 1);
+    //heap_sort(arr, n);
+    radix_sort(&arr[0], n);
     printArray(arr, n);
 
 }
