@@ -113,7 +113,7 @@ void Linkedlist::printList()
         return;
     }
 
-    cout << "List: ";
+    //cout << "List: ";
   
     // Traverse the list.
     while (temp != NULL) {
@@ -123,15 +123,25 @@ void Linkedlist::printList()
 }
 
 int main () {
-    Linkedlist list;
+    Linkedlist* list = new Linkedlist();
+    int n;
+    cin >> n;
 
-    list.insertNode(0, 1);
-    list.insertNode(1, 3);
-    list.insertNode(1, 4);
-    list.insertNode(2, 2);
-    // list.insertNode(0, 5);
-    // list.insertNode(3, 2);
-    list.deleteNode(2);
-    list.printList();
+    for (int i = 0; i < n; i++) {
+        string command;
+        cin >> command;
+
+        if (command == "insert") {
+            int position, value;
+            cin >> position >> value;
+            list->insertNode(position, value);
+        } else if (command == "delete") {
+            int position;
+            cin >> position;
+            list->deleteNode(position);
+        }
+    }
+
+    list->printList();
 
 }
