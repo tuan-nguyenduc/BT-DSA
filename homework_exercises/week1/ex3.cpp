@@ -44,8 +44,8 @@ void merge(int a[], int const left, int const mid, int const right) {
     int subArrayOne = mid - left + 1;
     int subArrayTwo = right - mid;
 
-    int *leftArray = new int[subArrayOne];
-    int *rightArray = new int[subArrayTwo];
+    int leftArray[subArrayOne];
+    int rightArray[subArrayTwo];
 
     for (int i = 0; i < subArrayOne; i++) {
         leftArray[i] = a[left + i];
@@ -76,9 +76,6 @@ void merge(int a[], int const left, int const mid, int const right) {
         indexOfSubArrayOne++;
         indexOfMergedArray++;
     }
-
-    delete leftArray;
-    delete rightArray;
 }
 
 void merge_sort(int a[], int const begin, int const end) {

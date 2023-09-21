@@ -1,0 +1,2 @@
+Sort the following functions in the ascending order of Big O notation:
+2^n - n^3 - (n^2 + 10n) - (4nlogn + 2n) - (nlogn) - 4n - (3n + 100logn) - 2^logn - 2^10.
