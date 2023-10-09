@@ -45,6 +45,9 @@ public:
     }
 
     // Các hàm khởi tạo khác nếu cần thiết
+    int getNumberOfNodes() {
+        return countNodes(root);
+    }
 
     // Hàm thêm một Node vào cây
     // Hàm trả về false nếu Node cha không tồn tại trên cây
@@ -98,94 +101,6 @@ public:
     // Hàm trả về số lượng Node đã xoá
     // Nếu Node data không tồn tại trả về 0 (zero)
     // int remove(int data) {
-    //     if(!root) {
-    //         return 0;
-    //     }
-
-    //     if (!root->firstChild) {
-    //         if (root->data == data) {
-    //             root = NULL;
-    //             return 1;
-    //         } else {
-    //             return 0;
-    //         }
-    //     }
-
-    //     int deletedNodes = 0;
-    //     Node* current = root;
-
-    //     queue<Node*> q;
-    //     q.push(root);
-
-    //     while (!q.empty()) {
-    //         Node* current = q.front();
-    //         q.pop();
-
-    //         if (current->data == data) {
-    //             deletedNodes = removeSubtree(current);
-    //             break;
-    //         }
-
-    //         if (current->firstChild) {
-    //             Node* child = current->firstChild;
-    //             q.push(child);
-    //             Node* sibling = child->nextChild;
-    //             while(sibling) {
-    //                 q.push(sibling);
-    //                 sibling = sibling->nextChild;
-    //             }
-    //         }
-    //     }
-
-    //     return deletedNodes;
-
-    // }
-
-    // int removeSubtree(Node* node) {
-    //     if (node == NULL) {
-    //         return 0;
-    //     }
-    //     Node* parentNode = node->fatherNode;
-
-    //     int deletedNotes = 0;
-
-    //     //Xoa not la
-    //     if (!node->firstChild) {
-    //         if (parentNode->firstChild->data == node->data) {
-    //             parentNode->firstChild = node->nextChild;
-    //             delete node;
-    //             return 1;
-    //         } else {
-    //             Node* prev = parentNode->firstChild;
-    //             Node* current = parentNode->firstChild->nextChild;
-    //             while (current->data != node->data) {
-    //                 prev = prev->nextChild;
-    //                 current = current->nextChild;
-    //             }
-    //             prev->nextChild = prev->nextChild->nextChild;
-    //             delete current;
-    //             return 1;
-    //         }
-    //     }
-
-    //     Node* temp = node;
-
-    //     while (temp->firstChild) {
-    //         Node* child = temp->firstChild;
-    //         deletedNotes++;
-    //         Node* sibling = child->nextChild;
-    //         while(sibling) {
-    //             deletedNotes++;
-    //             sibling = sibling->nextChild;
-    //         }
-    //         temp = temp->firstChild;
-    //     }
-
-
-
-    //     return deletedNotes;
-    // }
-
     int remove(int data) {
     if (!root) {
         return 0;
@@ -584,17 +499,34 @@ void deleteSubtree(Node* node) {
 };
 
 int main(int argc, char const *argv[]) {
-    // Tạo ra một cây ngẫu nhiên có tối thiểu 30 Node
+// Tạo ra một cây ngẫu nhiên có tối thiểu 30 Node
     Tree tree;
     tree.insert(0, 1);
-    tree.insert(1, 2);
-    tree.insert(1, 3);
-    tree.insert(2, 4);
-    tree.insert(2, 5);
-    tree.insert(3, 6);
-    tree.insert(3, 7);
-    tree.insert(3, 8);
-    //tree.insert(3, 8);
+    int newNodeValue = 2;
+    while (tree.getNumberOfNodes() < 30) {
+        int fatherValue = rand() % newNodeValue + 1; // Chọn một nút cha ngẫu nhiên trong cây hiện có
+        tree.insert(fatherValue, newNodeValue);
+        newNodeValue++;
+    }
+
+// Tạo ra một cây thoả mãn tính chất là Binary Search Tree và test lại
+    // Tree tree;
+    // tree.insert(0, 8);
+    // tree.insert(8, 3);
+    // tree.insert(8, 10);
+    // tree.insert(3, 1);
+    // tree.insert(3, 6);
+    // tree.insert(10, 14);
+    // tree.insert(6, 4);
+    // tree.insert(6, 7);
+    // tree.insert(14, 13);
+// Tạo ra một cây thoả mãn tính chất là Max Heap Tree và test lại
+    // tree.insert(0, 1);
+    // tree.insert(1, 3);
+    // tree.insert(1, 6);
+    // tree.insert(3, 5);
+    // tree.insert(3, 9);
+    // tree.insert(6, 8);
     // Test thử các hàm của lớp cây
     cout << "Preorder traversal: ";
     tree.preorder();
@@ -605,6 +537,7 @@ int main(int argc, char const *argv[]) {
     // cout << "Inorder traversal: ";
     // tree.inorder();
     // cout << endl;
+    cout << "Number of nodes: " << tree.getNumberOfNodes() << endl;
     cout << "Is binary? " << tree.isBinaryTree() << endl;
     cout << "Is binary search tree? " << tree.isBinaryTree() << endl;
     cout << "Is max heap tree? " << tree.isBinaryTree() << endl;
@@ -617,8 +550,5 @@ int main(int argc, char const *argv[]) {
     cout << "Preorder traversal after remove 3: ";
     tree.preorder();
     cout << endl;
-    // Tạo ra một cây thoả mãn tính chất là Binary Search Tree và test lại
-    
-    // Tạo ra một cây thoả mãn tính chất là Max Heap Tree và test lại
     return 0;
 }
