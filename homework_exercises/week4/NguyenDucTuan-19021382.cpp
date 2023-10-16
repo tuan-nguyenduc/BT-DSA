@@ -5,26 +5,30 @@
 using namespace std;
 
 // Một Node trong cây
-class Node {
+class Node
+{
     // Chứa thông tin của Node đó
     int data;
     // Con trỏ đến Node cha
-    Node* fatherNode;
+    Node *fatherNode;
 
     // Con trỏ đến các Node con
     // Đây là một danh sách liên kết (con trỏ đến con đầu tiên)
     // Thứ tự ưu tiên từ nhỏ đến lớn (con nhỏ được duyệt trước)
-    Node* firstChild;
-    Node* nextChild;
+    Node *firstChild;
+    Node *nextChild;
+
 public:
-    Node() {
+    Node()
+    {
         // ...
         fatherNode = NULL;
         firstChild = NULL;
         nextChild = NULL;
     }
 
-    Node(int _data) {
+    Node(int _data)
+    {
         // ...
         data = _data;
         fatherNode = NULL;
@@ -36,47 +40,62 @@ public:
 };
 
 // Lớp Cây
-class Tree {
+class Tree
+{
     // Chứa một Node gốc
-    Node* root;
+    Node *root;
+
 public:
-    Tree() {
+    Tree()
+    {
         root = NULL;
     }
 
     // Các hàm khởi tạo khác nếu cần thiết
-    int getNumberOfNodes() {
+    int getNumberOfNodes()
+    {
         return countNodes(root);
     }
 
     // Hàm thêm một Node vào cây
     // Hàm trả về false nếu Node cha không tồn tại trên cây
     // hoặc Node father đã có con là data
-    bool insert(int father, int data) {
-        if (!root) {
-            if (father == 0) {
+    bool insert(int father, int data)
+    {
+        if (!root)
+        {
+            if (father == 0)
+            {
                 root = new Node(data);
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
 
-        queue<Node*> q;
+        queue<Node *> q;
         q.push(root);
 
-        while (!q.empty()) {
-            Node* current = q.front();
+        while (!q.empty())
+        {
+            Node *current = q.front();
             q.pop();
 
-            if (current->data == father) {
-                if (current->firstChild == NULL) {
+            if (current->data == father)
+            {
+                if (current->firstChild == NULL)
+                {
                     current->firstChild = new Node(data);
                     current->firstChild->fatherNode = current;
                     return true;
-                } else {
-                    Node* child = current->firstChild;
-                    while (child->nextChild != NULL) {
+                }
+                else
+                {
+                    Node *child = current->firstChild;
+                    while (child->nextChild != NULL)
+                    {
                         child = child->nextChild;
                     }
                     child->nextChild = new Node(data);
@@ -84,12 +103,14 @@ public:
                     return true;
                 }
             }
-            if (current->firstChild) {
+            if (current->firstChild)
+            {
                 q.push(current->firstChild);
-                Node* sibling = current->firstChild->nextChild;
-                while (sibling != NULL) {
+                Node *sibling = current->firstChild->nextChild;
+                while (sibling != NULL)
+                {
                     q.push(sibling);
-                    sibling= sibling->nextChild;
+                    sibling = sibling->nextChild;
                 }
             }
         }
@@ -101,122 +122,147 @@ public:
     // Hàm trả về số lượng Node đã xoá
     // Nếu Node data không tồn tại trả về 0 (zero)
     // int remove(int data) {
-    int remove(int data) {
-    if (!root) {
-        return 0;
-    }
-
-    if (root->data == data) {
-        int deletedNodes = countNodes(root);
-        deleteSubtree(root);
-        root = nullptr;
-        return deletedNodes;
-    }
-
-    queue<Node*> q;
-    q.push(root);
-
-    while (!q.empty()) {
-        Node* current = q.front();
-        q.pop();
-
-        Node* parentNode = nullptr;
-
-        // Search for the node to remove and its parent
-        if (current->firstChild) {
-            if (current->firstChild->data == data) {
-                parentNode = current;
-                current = current->firstChild;
-            } else {
-                Node* sibling = current->firstChild->nextChild;
-                while (sibling) {
-                    if (sibling->data == data) {
-                        parentNode = current;
-                        current = sibling;
-                        break;
-                    }
-                    sibling = sibling->nextChild;
-                }
-            }
+    int remove(int data)
+    {
+        if (!root)
+        {
+            return 0;
         }
 
-        if (parentNode) {
-            // Node with the given data was found, remove it
-            int deletedNodes = countNodes(current);
-            deleteSubtree(current);
-            
-            // Remove the deleted node from the parent's child list
-            if (parentNode->firstChild == current) {
-                parentNode->firstChild = current->nextChild;
-            } else {
-                Node* prev = parentNode->firstChild;
-                while (prev->nextChild != current) {
-                    prev = prev->nextChild;
-                }
-                prev->nextChild = current->nextChild;
-            }
-
+        if (root->data == data)
+        {
+            int deletedNodes = countNodes(root);
+            deleteSubtree(root);
+            root = nullptr;
             return deletedNodes;
         }
 
-        if (current->firstChild) {
-            Node* child = current->firstChild;
-            while (child) {
-                q.push(child);
-                child = child->nextChild;
+        queue<Node *> q;
+        q.push(root);
+
+        while (!q.empty())
+        {
+            Node *current = q.front();
+            q.pop();
+
+            Node *parentNode = nullptr;
+
+            // Search for the node to remove and its parent
+            if (current->firstChild)
+            {
+                if (current->firstChild->data == data)
+                {
+                    parentNode = current;
+                    current = current->firstChild;
+                }
+                else
+                {
+                    Node *sibling = current->firstChild->nextChild;
+                    while (sibling)
+                    {
+                        if (sibling->data == data)
+                        {
+                            parentNode = current;
+                            current = sibling;
+                            break;
+                        }
+                        sibling = sibling->nextChild;
+                    }
+                }
+            }
+
+            if (parentNode)
+            {
+                // Node with the given data was found, remove it
+                int deletedNodes = countNodes(current);
+                deleteSubtree(current);
+
+                // Remove the deleted node from the parent's child list
+                if (parentNode->firstChild == current)
+                {
+                    parentNode->firstChild = current->nextChild;
+                }
+                else
+                {
+                    Node *prev = parentNode->firstChild;
+                    while (prev->nextChild != current)
+                    {
+                        prev = prev->nextChild;
+                    }
+                    prev->nextChild = current->nextChild;
+                }
+
+                return deletedNodes;
+            }
+
+            if (current->firstChild)
+            {
+                Node *child = current->firstChild;
+                while (child)
+                {
+                    q.push(child);
+                    child = child->nextChild;
+                }
             }
         }
-    }
 
-    return 0;
-}
-
-int countNodes(Node* node) {
-    if (!node) {
         return 0;
     }
 
-    int count = 1;
+    int countNodes(Node *node)
+    {
+        if (!node)
+        {
+            return 0;
+        }
 
-    Node* child = node->firstChild;
-    while (child) {
-        count += countNodes(child);
-        child = child->nextChild;
+        int count = 1;
+
+        Node *child = node->firstChild;
+        while (child)
+        {
+            count += countNodes(child);
+            child = child->nextChild;
+        }
+
+        return count;
     }
 
-    return count;
-}
+    void deleteSubtree(Node *node)
+    {
+        if (!node)
+        {
+            return;
+        }
 
-void deleteSubtree(Node* node) {
-    if (!node) {
-        return;
+        // Recursively delete all children of the current node
+        Node *child = node->firstChild;
+        while (child)
+        {
+            Node *nextChild = child->nextChild;
+            deleteSubtree(child);
+            child = nextChild;
+        }
+
+        // Delete the current node
+        delete node;
     }
-
-    // Recursively delete all children of the current node
-    Node* child = node->firstChild;
-    while (child) {
-        Node* nextChild = child->nextChild;
-        deleteSubtree(child);
-        child = nextChild;
-    }
-
-    // Delete the current node
-    delete node;
-}
-
 
     // Hàm in ra các Node theo thứ tự preorder
-    void preorder() {
-        if (root) {
+    void preorder()
+    {
+        if (root)
+        {
             preorderNode(root);
         }
-        
     }
 
-    void preorderNode(Node* node) {
-        if (node) {
+    void preorderNode(Node *node)
+    {
+        if (node)
+        {
             cout << node->data << " ";
-            Node* current = node->firstChild;
+            Node *current = node->firstChild;
             while (current)
             {
                 preorderNode(current);
@@ -226,16 +272,21 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm in ra các Node theo thứ tự postorder
-    void postorder() {
-        if (root) {
+    void postorder()
+    {
+        if (root)
+        {
             postorderNode(root);
         }
     }
 
-    void postorderNode(Node* node) {
-        if (node) {
-            Node* current = node->firstChild;
-            while(current) {
+    void postorderNode(Node *node)
+    {
+        if (node)
+        {
+            Node *current = node->firstChild;
+            while (current)
+            {
                 postorderNode(current);
                 current = current->nextChild;
             }
@@ -245,25 +296,30 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm kiểm tra cây nhị phân
-    bool isBinaryTree() {
-        if (!root) {
+    bool isBinaryTree()
+    {
+        if (!root)
+        {
             return true;
         }
 
         return isBinaryTreeNode(root);
-
     }
 
-    bool isBinaryTreeNode(Node* node) {
-        if (!node) {
+    bool isBinaryTreeNode(Node *node)
+    {
+        if (!node)
+        {
             return true;
         }
 
         int childCount = 0;
-        Node* current = node->firstChild;
-        while (current) {
+        Node *current = node->firstChild;
+        while (current)
+        {
             childCount++;
-            if (childCount > 2) {
+            if (childCount > 2)
+            {
                 return false;
             }
             current = current->nextChild;
@@ -273,75 +329,90 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm kiểm tra cây tìm kiếm nhị phân
-    bool isBinarySearchTree() {
-            Node* prev = nullptr; // Initialize prev to nullptr
-            return isBST(root, prev);
+    bool isBinarySearchTree()
+    {
+        Node *prev = nullptr; // Initialize prev to nullptr
+        return isBST(root, prev);
     }
-    bool isBST(Node* node, Node*& prev) {
-    if (!node) {
-        return true; // An empty tree is a BST
-    }
-
-    // Recursively check the left subtree
-    if (!isBST(node->firstChild, prev)) {
-        return false;
-    }
-
-    // Check if the current node's value is greater than the previous node's value (if prev is not nullptr)
-    if (prev && node->data <= prev->data) {
-        return false;
-    }
-
-    // Update prev to the current node
-    prev = node;
-
-    // Recursively check the right subtree
-    return isBST(node->nextChild, prev);
-}
-
-    // Hàm kiểm tra cây max-heap
-    bool isMaxHeapTree() {
-        if (!root) {
-        return true; // An empty tree is a max-heap
-    }
-
-    return isMaxHeap(root);
-    }
-
-    bool isMaxHeap(Node* node) {
-    if (!node) {
-        return true; // An empty subtree is a max-heap
-    }
-
-    Node* current = node->firstChild;
-
-    while (current) {
-        // Check if the current node's value is less than its child's value
-        if (current->data > node->data) {
-            return false; // Violation of max-heap property
+    bool isBST(Node *node, Node *&prev)
+    {
+        if (!node)
+        {
+            return true; // An empty tree is a BST
         }
 
-        // Recursively check the child's subtree
-        if (!isMaxHeap(current)) {
+        // Recursively check the left subtree
+        if (!isBST(node->firstChild, prev))
+        {
             return false;
         }
 
-        current = current->nextChild;
+        // Check if the current node's value is greater than the previous node's value (if prev is not nullptr)
+        if (prev && node->data <= prev->data)
+        {
+            return false;
+        }
+
+        // Update prev to the current node
+        prev = node;
+
+        // Recursively check the right subtree
+        return isBST(node->nextChild, prev);
     }
 
-    return true; // Max-heap property holds for this subtree
-}
+    // Hàm kiểm tra cây max-heap
+    bool isMaxHeapTree()
+    {
+        if (!root)
+        {
+            return true; // An empty tree is a max-heap
+        }
 
+        return isMaxHeap(root);
+    }
+
+    bool isMaxHeap(Node *node)
+    {
+        if (!node)
+        {
+            return true; // An empty subtree is a max-heap
+        }
+
+        Node *current = node->firstChild;
+
+        while (current)
+        {
+            // Check if the current node's value is less than its child's value
+            if (current->data > node->data)
+            {
+                return false; // Violation of max-heap property
+            }
+
+            // Recursively check the child's subtree
+            if (!isMaxHeap(current))
+            {
+                return false;
+            }
+
+            current = current->nextChild;
+        }
+
+        return true; // Max-heap property holds for this subtree
+    }
 
     // Hàm in ra các Node theo thứ tự inorder nếu là cây nhị phân
-    void inorder() {
-        if (root) {
+    void inorder()
+    {
+        if (root)
+        {
             inorderNode(root);
         }
     }
 
-    void inorderNode(Node* node) {
-        if (node) {
+    void inorderNode(Node *node)
+    {
+        if (node)
+        {
             inorderNode(node->firstChild);
 
             cout << node->data << " ";
@@ -351,21 +422,26 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm trả về độ cao của cây
-    int height() {
+    int height()
+    {
         return calculateHeight(root);
     }
 
-    int calculateHeight(Node* node) {
-        if (!node) {
+    int calculateHeight(Node *node)
+    {
+        if (!node)
+        {
             return 0;
         }
 
         int maxHeight = 0;
 
-        Node* current = node->firstChild;
-        while(current) {
+        Node *current = node->firstChild;
+        while (current)
+        {
             int childHeight = calculateHeight(current);
-            if (childHeight > maxHeight) {
+            if (childHeight > maxHeight)
+            {
                 maxHeight = childHeight;
             }
             current = current->nextChild;
@@ -375,24 +451,30 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm trả về độ sâu của một Node
-    int depth(int data) {
+    int depth(int data)
+    {
         return findDepth(root, data, 1);
     }
 
-    int findDepth(Node* node, int data, int currentDepth) {
-        if (!node) {
+    int findDepth(Node *node, int data, int currentDepth)
+    {
+        if (!node)
+        {
             return -1;
         }
 
-        if (node->data == data) {
+        if (node->data == data)
+        {
             return currentDepth;
         }
 
-        Node* current = node->firstChild;
+        Node *current = node->firstChild;
 
-        while(current) {
+        while (current)
+        {
             int childDepth = findDepth(current, data, currentDepth + 1);
-            if (childDepth != -1) {
+            if (childDepth != -1)
+            {
                 return childDepth;
             }
             current = current->nextChild;
@@ -402,23 +484,28 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm đếm số lượng lá
-    int numOfLeaves() {
+    int numOfLeaves()
+    {
         return countLeaves(root);
     }
 
-    int countLeaves(Node* node) {
-        if (!node) {
+    int countLeaves(Node *node)
+    {
+        if (!node)
+        {
             return 0;
         }
 
-        if (!node->firstChild) {
+        if (!node->firstChild)
+        {
             return 1;
         }
 
         int leafCount = 0;
 
-        Node* current = node->firstChild;
-        while(current) {
+        Node *current = node->firstChild;
+        while (current)
+        {
             leafCount += countLeaves(current);
             current = current->nextChild;
         }
@@ -427,8 +514,10 @@ void deleteSubtree(Node* node) {
     }
 
     // Hàm trả về Node có giá trị lớn nhất
-    int findMax() {
-        if (!root) {
+    int findMax()
+    {
+        if (!root)
+        {
             return -1;
         }
         int maxVal = root->data;
@@ -438,78 +527,91 @@ void deleteSubtree(Node* node) {
         return maxVal;
     }
 
-    void findMaxNode(Node* node, int& maxVal) {
-        if (!node) {
+    void findMaxNode(Node *node, int &maxVal)
+    {
+        if (!node)
+        {
             return;
         }
 
-        if (node->data > maxVal) {
+        if (node->data > maxVal)
+        {
             maxVal = node->data;
         }
 
-        Node* current = node->firstChild;
+        Node *current = node->firstChild;
 
-        while(current) {
+        while (current)
+        {
             findMaxNode(current, maxVal);
             current = current->nextChild;
         }
     }
 
     // Hàm trả về Node có nhiều con nhất
-    int findMaxChild() {
-        if (!root) {
+    int findMaxChild()
+    {
+        if (!root)
+        {
             return -1;
         }
 
         int maxChildCount = 0;
 
-        Node* maxChildNode =  nullptr;
+        Node *maxChildNode = nullptr;
 
         findMaxChildNode(root, maxChildCount, maxChildNode);
 
         return (maxChildNode ? maxChildNode->data : -1);
     }
 
-    void findMaxChildNode(Node* node, int& maxChildCount, Node*& maxChildNode) {
-        if (!node) {
+    void findMaxChildNode(Node *node, int &maxChildCount, Node *&maxChildNode)
+    {
+        if (!node)
+        {
             return;
         }
 
         int childCount = 0;
 
-        Node* current = node->firstChild;
+        Node *current = node->firstChild;
 
-        while (current) {
+        while (current)
+        {
             childCount++;
             current = current->nextChild;
         }
 
-        if (childCount > maxChildCount) {
+        if (childCount > maxChildCount)
+        {
             maxChildCount = childCount;
             maxChildNode = node;
         }
 
         current = node->firstChild;
 
-        while (current) {
+        while (current)
+        {
             findMaxChildNode(current, maxChildCount, maxChildNode);
             current = current->nextChild;
         }
     }
 };
 
-int main(int argc, char const *argv[]) {
-// Tạo ra một cây ngẫu nhiên có tối thiểu 30 Node
+int main(int argc, char const *argv[])
+{
+    // Tạo ra một cây ngẫu nhiên có tối thiểu 30 Node
     Tree tree;
     tree.insert(0, 1);
     int newNodeValue = 2;
-    while (tree.getNumberOfNodes() < 30) {
+    while (tree.getNumberOfNodes() < 30)
+    {
         int fatherValue = rand() % newNodeValue + 1; // Chọn một nút cha ngẫu nhiên trong cây hiện có
         tree.insert(fatherValue, newNodeValue);
         newNodeValue++;
     }
 
-// Tạo ra một cây thoả mãn tính chất là Binary Search Tree và test lại
+    // Tạo ra một cây thoả mãn tính chất là Binary Search Tree và test lại
     // Tree tree;
     // tree.insert(0, 8);
     // tree.insert(8, 3);
@@ -520,7 +622,7 @@ int main(int argc, char const *argv[]) {
     // tree.insert(6, 4);
     // tree.insert(6, 7);
     // tree.insert(14, 13);
-// Tạo ra một cây thoả mãn tính chất là Max Heap Tree và test lại
+    // Tạo ra một cây thoả mãn tính chất là Max Heap Tree và test lại
     // tree.insert(0, 1);
     // tree.insert(1, 3);
     // tree.insert(1, 6);
