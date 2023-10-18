@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int countConnectedComponents(int n, vector<pair<int,int>> edges, int X, int Y) {
+int shortestPath(int n, vector<pair<int,int>> edges, int X, int Y) {
     vector<vector<int>> graph(n);
 
     for (auto edge : edges) {
@@ -50,7 +50,7 @@ int main() {
         edges.push_back({x, y});
     }
 
-    int result = countConnectedComponents(n, edges, X, Y);
+    int result = shortestPath(n, edges, X, Y);
     cout << result << endl;
 
     return 0;
