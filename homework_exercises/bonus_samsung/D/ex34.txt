@@ -1,0 +1,12 @@
+Để tìm đường đi đơn điệu ngắn nhất trong đồ thị có trọng số, có thể dãn cạnh theo thứ tự tăng dần và giảm dần của trọng số:
+1. Dãn Cạnh theo Thứ Tự Tăng Dần:
+- Sắp xếp tất cả các cạnh của đồ thị theo thứ tự tăng dần của trọng số.
+- Sử dụng một thuật toán tìm đường đi ngắn nhất như Dijkstra để tìm đường đi từ đỉnh xuất phát đến mỗi đỉnh khác, sử dụng chỉ các cạnh được sắp xếp.
+
+2. Dãn Cạnh theo Thứ Tự Giảm Dần:
+- Sắp xếp tất cả các cạnh của đồ thị theo thứ tự giảm dần của trọng số.
+- Sử dụng một thuật toán tìm đường đi ngắn nhất, chẳng hạn như Dijkstra hoặc Bellman-Ford, để tìm đường đi từ đỉnh xuất phát đến mỗi đỉnh khác, sử dụng chỉ các cạnh được sắp xếp.
+
+3. Chọn Đường Đi Tốt Nhất:
+- So sánh độ dài của đường đi từ bước 1 và bước 2.
+- Chọn đường đi ngắn nhất trong hai đường đi tìm được.

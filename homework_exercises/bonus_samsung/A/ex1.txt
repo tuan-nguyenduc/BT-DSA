@@ -1,0 +1,15 @@
+Đồ thị 1:
++ 0-1-3-6-7-4-8-5-9-2-0 (Chu trình Euler)
++ Không có chu trình Hamilton
+
+Đồ thị 2:
++ Không có chu trình Euler
++ Không có chu trình Hamilton
+
+Đồ thị 3:
++ Không có chu trình Euler
++ Không có chu trình Hamilton
+
+Đồ thị 4:
++ Không có chu trình Euler
++ 0-2-5-8-9-6-3-7-4-1-0 (Chu trình Hamilton)

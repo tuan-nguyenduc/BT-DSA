@@ -1,0 +1,14 @@
+Để tìm critical edge trong đồ thị có hướng có trọng số, sử dụng ý tưởng về cạnh cầu(bridge) trong đồ thị vô hướng. 
+Trong đồ thị có hướng, cạnh cầu tương ứng với cạnh mà việc loại bỏ nó sẽ tăng mạnh nhất độ dài đường đi ngắn nhất từ đỉnh s đến đỉnh t.
+Thuật toán để giải quyết:
+
+1. Tìm Cạnh Cầu:
+- Sử dụng thuật toán DFS (Depth-First Search) để duyệt qua đồ thị và đánh dấu thời gian bắt đầu và thời gian kết thúc của mỗi đỉnh.
+- Xác định các cạnh cầu trong đồ thị, đây là các cạnh mà nếu loại bỏ nó, đồ thị sẽ trở thành không liên thông hơn.
+
+2. Kiểm Tra Tác Động của Các Cạnh Cầu:
+- Lặp qua tất cả các cạnh cầu đã tìm được.
+- Đối với mỗi cạnh cầu, thực hiện DFS sau khi loại bỏ cạnh đó khỏi đồ thị.
+- Đếm số lượng đỉnh từ s đến t trong cây DFS mới tạo ra.
+
+3. Xác Định Cạnh Khó: Chọn cạnh cầu mà việc loại bỏ nó gây ra số lượng đỉnh từ s đến t trong cây DFS mới tạo ra nhiều nhất.

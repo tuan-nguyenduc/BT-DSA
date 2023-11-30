@@ -1,0 +1,9 @@
+- Giả sử G là một đồ thị không bitconnected. Ta sẽ chứng mình rằng G phải có ít nhất một điểm articulation.
+- Nếu G không bitconnected, có ít nhất một cặp định s và t mà không có đường đi nối chúng. Chọn một đường đi P nối s và t. Đặt x là đỉnh trên đường đi P và y là đỉnh tiếp theo sau x trên đường đi P.
+- Khi ta xóa đỉnh x khỏi đồ thị G, đồ thị trở thành 2 phần liên thông: Một bao gồm đỉnh s và các đỉnh trước x trên đường đi P, và một bao gồm đỉnh y và các đỉnh sau x trên đường đi P.
+- Nếu không có đỉnh nào trên đường đi P là điểm articulation, nghĩa là xóa bất kì đỉnh nào trên đường đi P không làm đồ thị mất tính liên thông, thì s và t vẫn kết nối sau khi xóa đỉnh x. Điều này làm 
+mất tính liên thông của đồ thị, điều này này mâu thuẫn với giả sử G không bitconnected.
+- Do đó, có ít nhất một đỉnh trên đường đi P là điểm articulation. Vì s và t được chọn một cách tùy ý, ta có thể áp dụng quy luật trên cho mọi cặp đỉnh s và t.
+Như vậy, ta đã chứng minh rằng nếu G không bitconnected, thì G phải có ít nhất một điểm articulation.
+
+=> Phản chứng lại giả sử ban đầu, ta có kết luận rằng nếu G không có điểm articulation, thì G là đồ thị bitconnected.

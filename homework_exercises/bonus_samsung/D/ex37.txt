@@ -1,0 +1,11 @@
+Thuật toán giải quyết:
+- Khởi tạo một mảng distances với độ dài là hằng số C và tất cả giá trị là vô cực.
+- Khởi tạo một mảng visited để theo dõi các đỉnh đã được thăm.
+- Chọn đỉnh xuất phát và đặt độ dài đến đỉnh đó là 0.
+- Đặt current_distance bằng độ dài đường đi đến đỉnh xuất phát.
+- Trong mỗi bước lặp, tìm đỉnh chưa được thăm có độ dài đường đi nhỏ nhất từ distances.
+- Đánh dấu đỉnh đã được thăm và cập nhật current_distance thành độ dài đường đi mới.
+- Duyệt qua tất cả các đỉnh kề của đỉnh hiện tại.
+- Nếu đỉnh kề chưa được thăm, tính toán độ dài mới và so sánh với giá trị hiện tại trong distances.
+- Lặp qua tất cả các đỉnh để đảm bảo tất cả đều được thăm hoặc không còn đỉnh nào có thể đến được.
+=> Mảng distances bây giờ chứa độ dài ngắn nhất từ đỉnh xuất phát đến tất cả các đỉnh, không vượt quá giả định trọng số C.

@@ -1,0 +1,13 @@
+1. Khởi tạo đồ thị có hướng phi chu trình (DAG) với số đỉnh và danh sách kề
+2. Sử dụng thuật toán sắp xếp topo để tìm thứ tự topo của các đỉnh trong đồ thị.
+    - Bắt đầu từ bất kì đỉnh nào được thăm, thực hiện DFS để thêm đỉnh vào danh sách kết quả khi không còn đỉnh kề nào chưa được thăm.
+    - Kết quả là một danh sách các đỉnh theo thứ tự topo
+3. Kiểm tra đường đi.
+    - Duyệt qua danh sách topo và kiểm tra xem có cạnh nối giữa mọi cặp đỉnh liên tiếp trong thứ tự topo hay không.
+    - Nếu có cạnh nối giữa đỉnh u và v , đánh dấu đỉnh v là đã ghé thăm.
+    - Nếu không có cạnh nối, đồ thị không thỏa mãn yêu cầu.
+4. Kiểm tra tất cả đỉnh đã thăm.
+    - Kiểm tra tất cả đỉnh đã thăm hay không.
+    - Nếu có đỉnh nào đó chưa được thăm, đồ thị không thỏa mãn yêu cầu.
+
+=> Nếu tất cả các bước trên được thực hiện mà không có vấn đề gì thì đồ thị là DAG và tồn tại một đường đi có hướng qua mỗi đỉnh đúng một lần. Nếu có vấn đề ở bất kì bước nào thì đồ thị không thỏa mãn yêu cầu.

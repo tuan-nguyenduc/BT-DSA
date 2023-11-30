@@ -1,0 +1,7 @@
+Để tính thành phần liên thông mạnh của một đồ thị có hướng, chúng ta có thể sử dụng thuật toán Kosaraju dựa trên DFS (Depth-First Search). Thuật toán Kosaraju có thể được mô tả như sau:
+
+1. Thực hiện DFS để tính thời gian hoàn thành cho mỗi đỉnh trong đồ thị.
+
+2. Chuyển đồ thị ngược (reverse graph): Điều này có nghĩa là đảo hướng của tất cả các cạnh trong đồ thị. Nếu có một cạnh từ u đến v trong đồ thị gốc, thì cạnh trong đồ thị ngược sẽ từ v đến u.
+
+3. Thực hiện DFS trên đồ thị ngược từ đỉnh có thời gian hoàn thành cao nhất. Điều này sẽ tạo ra một cây DFS, và mỗi cây con của nó tương ứng với một thành phần liên thông mạnh.

@@ -1,0 +1,20 @@
+Để chứng minh rằng một đồ thị là đồ thị hai mầu khi và chỉ khi nó không chứa chu trình độ dài lẻ, chúng ta sẽ sử dụng phương pháp phản chứng.
+
+* Chứng minh nếu: 
+- Giả sử có một đồ thị G là đồ thị hai mầu. Điều này có nghĩa là có thể tô mỗi đỉnh của G bằng một trong hai mầu sao cho không có cạnh nối giữa hai đỉnh cùng mầu.
+- Xét chu trình độ dài lẻ C trong G. Nếu C có số đỉnh là chẵn, thì mỗi đỉnh trên C có thể được tô màu theo cách sao cho đỉnh kế tiếp có màu khác, do đó không có cạnh nối giữa hai đỉnh cùng mầu, điều này không làm mâu thuẫn.
+- Ngược lại, nếu C có số đỉnh là lẻ, thì cuối cùng của chu trình và đỉnh đầu tiên của chu trình phải có cùng màu (vì số đỉnh là lẻ). Nhưng vì C  là một chu trình, nói cách khác, cuối cùng của chu trình kết nối với đỉnh đầu tiên của chu trình. 
+Điều này đồng nghĩa với việc có một cạnh nối giữa hai đỉnh cùng màu, điều này mâu thuẫn với tính chất của đồ thị hai mầu. Do đó, không thể có chu trình độ dài lẻ trong đồ thị hai mầu.
+
+* Chứng minh chỉ khi:
+- Giả sử G là một đồ thị không chứa chu trình độ dài lẻ. Ta sẽ chứng minh rằng G là đồ thị hai mầu.
+- Ta sẽ sử dụng quy nạp theo số đỉnh của G. Đặt P(n) là mệnh đề "Mọi đồ thị không chứa chu trình độ dài lẻ với n đỉnh là đồ thị hai mầu."
++ Bước cơ bản: Chứng minh P(1) là đúng. Vì đồ thị có một đỉnh không có cạnh không chứa chu trình.
++ Bước chuyển giao: Giả sử P(k) là đúng với k đỉnh, tức là mọi đồ thị không chưa chi chu trình độ dài lẻ với k đỉnh là đồ thị hai mầu.
++ Bước chứng minh cho k + 1: Xét một đồ thị G' có k + 1 đỉnh không chứa chu trình độ dài lẻ. Chọn một đỉnh bất kì v trong G'. Xét G'' là đồ thị thu được bằng cách loại bỏ đỉnh v và tất cả các cạnh liên quan đến v từ G'.
+
+Do G' không chứa chu trình độ dài lẻ, nên G'' cũng không chứa chu trình độ dài lẻ. Theo giả sử quy nạp P(k), đồ thị G'' với k đỉnh là đồ thị hai mầu.
+Thêm đỉnh v trở lại vào G''. Vì G'' là đồ thị hai mầu và v không kết nối với bất kì đỉnh nào trong G'', nên ta có thể tô màu v sao cho màu của v khác với màu của các đỉnh liên kết với v trong G''.
+Do đó, ta đã chứng minh P(k + 1). Theo quy nạp, mọi đồ thị không chứa chu trình độ dài lẻ là đồ thị hai mầu.
+
+=> Ta đã chứng mình 2 chiều và đồng thời chứng mình rằng một đồ thị hai mầu khi và chỉ khi nó không chứa chu trình độ dài lẻ.

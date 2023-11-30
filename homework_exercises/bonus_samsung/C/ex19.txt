@@ -1,0 +1,7 @@
+Thuật toán tìm tất cả các cạnh khó trong đồ thị (Gabow-Tarjan):
+- Gán nhãn từng đỉnh trong đồ thị sao cho mỗi đỉnh đều có một nhãn khác nhau
+- Thực hiện duyệt đồ thị theo chiều sâu (DFS)
+- Gán nhãn cho các đỉnh và ghi nhớ thời điểm bắt đầu thăm mỗi đỉnh
+- Trong quá trình thăm, nếu tìm thấy một cạnh quay lại (back edge) với đỉnh có nhãn thấp hơn, ghi nhận cạnh đó là một cạnh cầu (critical edge)
+- Xử lý cạnh quay lại bằng cách cập nhật nhãn của đỉnh đó với nhãn nhỏ nhất từ các đỉnh mà cạnh quay lại điều chỉnh
+- Độ phức tạp của thuật toán là O(E(log2E))

@@ -1,0 +1,6 @@
+Một số cải tiến để thực hiện thuật toán Prim một cách hiệu quả:
+1. Thay vì dùng heap tiêu tốn nhiều bộ nhớ, bạn có thể sử dụng một heap nhỏ hơn để chỉ lưu trữ một số đỉnh nhỏ. Duyệt qua các đỉnh và cạnh để chọn các đỉnh có trọng số nhỏ nhất.
+2. Chia đồ thị thành các phần nhỏ và áp dụng thuật toán Prim cho từng phần. Sau đó kết hợp các cây bao trùm con này để tạo cây bao trùm toàn cục.
+3. Giảm kích thước cây bao trùm bằng cách chỉ giữ một số đỉnh chưa tham gia vào cây. Sau khi thêm một số cạnh, loại bỏ các đỉnh không cần thiết để giảm kích thước cây.
+4. Thay vì bắt đầu từ một đỉnh cụ thể, có thể chọn một đỉnh ngẫu nhiên để bắt đầu thuật toán Prim. Điều này giúp tránh tình trạng tập trung vào một phần đồ thị lớn.
+5. Sử dụng cấu trúc dữ liệu hiệu quả như danh sách kề thưa (sparse adjacency list) thay vì ma trận kề nếu đồ thị là đồ thị thưa.

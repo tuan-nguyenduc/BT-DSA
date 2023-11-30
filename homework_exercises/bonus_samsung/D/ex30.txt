@@ -1,0 +1,8 @@
+Thuật toán tìm đường đi dài nhất trong đồ thị có hướng phi chu trình (DAG) có trọng số dùng Dijkstra:
+1. Khởi tạo một mảng dist với giá trị âm vô cùng cho tất cả các đỉnh, ngoại trừ đỉnh xuất phát có giá trị 0.
+2. Sắp xếp các đỉnh của DAG theo thứ tự topo. Điều này đảm bảo rằng khi xét một đỉnh, tất cả các đỉnh trước đó đã được xét.
+3. Duyệt qua từng đỉnh theo thứ tự topo và cập nhật giá trị dist cho tất cả các đỉnh kề của đỉnh hiện tại. Cập nhật giá trị:
+    dist[v] = max(dist[v], dist[u] + weight) 
+trong đó u là đỉnh hiện tại, v là đỉnh kề của u và weight là trọng số của cạnh từ u đến v.
+
+=> Thuật toán sẽ kết thúc với mảng dist chứa giá trị dài nhất từ đỉnh xuất phát đến tất cả các đỉnh khác trong DAG.

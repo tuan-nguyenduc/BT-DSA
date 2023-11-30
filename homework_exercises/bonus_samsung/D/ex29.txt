@@ -1,0 +1,6 @@
+Thuật toán cải tiến thuật toán Dijkstra để tối ưu hóa cho đồ thị Euclid:
+- Sử dụng hàng đợi ưu tiên dựa trên chiều dài của đoạn đường
+- Thay vì sử dụng khoảng cách Euclid, sử dụng chiều dài của đoạn đường theo trục x và y
+- Sử dụng bảng băm để kiểm tra xem một điểm đã được thăm hay chưa
+- cập nhật chiều dài khi tìm thấy đoạn đường ngắn hơn và thêm các điểm hàng xóm vào hàng đợi ưu tiên nếu chúng có chiều dài mới nhỏ hơn
+=> Giảm độ phức tạp của thuật toán Dijkstra trong các đồ thị Euclid

@@ -1,0 +1,15 @@
+1. Thuật toán cải tiến Prim để tính rừng bao trùm nhỏ nhất trên đồ thị có trọng số không nhất thiết liên thông:
+    - Tạo một tập hợp cây bao trùm nhỏ nhất MST để lưu trữ các cạnh của cây bao trùm nhỏ nhất
+    - Chọn một cây bất kì làm đỉnh xuất phát, thêm nó vào MST
+    - Tìm cạnh có trọng số nhỏ nhất mà có một đỉnh nằm trong MST và một đỉnh không nằm trong MST, thêm cạnh đó vào MST
+    - Lặp lại đến khi MST chứa V-1 cạnh với V là số đỉnh.
+=> MST cuối cùng sẽ chứa rừng bao trùm nhỏ nhất
+
+2. Thuật toán cải tiển Krushal để tính rừng bao trùm nhỏ nhất trên đồ thị có trọng số không nhất thiết liên thông:
+    - Tạo một tập hợp MST để lưu trữ các cạnh của rừng bao trùm nhỏ nhất.
+    - Sắp xếp tất cả các cạnh theo trọng số tăng dần
+    - Chọn cạnh có trọng số nhỏ nhất từ danh sách cạnh chưa xét
+    - Nếu cạnh tạo chu trình với MST, bỏ qua và chọn cạnh tiếp theo\
+    - Thêm cạnh vào MST
+    - Lặp lại đến khi MST chưa V-1 cạnh với V là số đỉnh
+=> MST cuối cùng sẽ chứa rừng bao trùm nhỏ nhất

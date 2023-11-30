@@ -1,0 +1,6 @@
+Bài toán: Cho một ma trận NxN chứa các số nguyên dương, tìm đường đi ngắn nhất từ ô (0, 0) đến ô (N-1, N-1), sao cho độ dài của đường đi là tổng của các số nguyên trên đường đi.
+Thuật toán:
+1. Bắt đầu từ ô (0, 0) và khởi tạo một ma trận dist có kích thước NxN với giá trị vô cùng cho tất cả các ô, ngoại trừ dist[0][0] = matrix[0][0].
+    Sử dụng một hàng đợi ưu tiên để lưu các ô cần xét, với ưu tiên dựa trên giá trị dist.
+2. Lặp qua các ô có thể đến được từ ô hiện tại và cập nhật giá trị dist nếu tìm thấy một đường đi ngắn hơn. Đồng thời, thêm các ô cập nhật vào hàng đợi ưu tiên.
+3. Khi hàng đợi ưu tiên trở thành trống, giá trị cuối cùng của dist[N-1][N-1] sẽ là độ dài của đường đi ngắn nhất.

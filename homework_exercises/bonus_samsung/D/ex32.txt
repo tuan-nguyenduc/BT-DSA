@@ -1,0 +1,5 @@
+Sử dụng thuật toán Floyd-Warshall để tiền xử lý và sau đó có thể trả kết quả khoảng cách giữa hai đỉnh bất kỳ trong thời gian hằng số:
+1. Tạo ma trận dist kích thước VxV (V là số đỉnh của đồ thị) và khởi tạo giá trị của dist[i][j] là khoảng cách giữa đỉnh i và j.
+    Nếu không có cạnh nối trực tiếp giữa i và j, đặt dist[i][j] = INF (vô cùng)
+2. Sử dụng thuật toán Floyd-Warshall để cập nhật ma trận dist sao cho dist[i][j] là khoảng cách ngắn nhất giữa i và j thông qua tất cả các đỉnh trung gian
+3. Kết quả cuối cùng là ma trận dist chứa khoảng cách ngắn nhất giữa các cặp đỉnh

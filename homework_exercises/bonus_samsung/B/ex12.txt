@@ -1,0 +1,10 @@
+Thuật toán xác định xem một đồ thị có thứ tự tô pô duy nhất hay không:
+
+1. Kiểm tra đồ thị có hướng, đảm bảo đồ thị đang xét là đồ thị có hướng vì nếu đồ thị có chu trình thì không thể có thứ tự topo.
+2. Tìm thứ tự topo của các đỉnh trong đồ thị bằng thuật toán sắp xếp topo
+3. Kiểm tra cạnh nối giữa 2 đỉnh liên tiếp
+    - Duyệt qua danh sách thứ tự topo và kiểm tra xem có cạnh nối giữa mỗi cặp đỉnh liên tiếp trong thứ tự topo hay không.
+    - Nếu có cạnh nối giữa đỉnh u và v trong thứ tự topo, tiến hành kiểm tra các cạnh nối giữa đỉnh v và u.\
+    - Nếu không có cạnh nối hoặc có nhiều hơn một cạnh nối giữa 2 đỉnh liên tiếp, thì đồ thị không có thú tự topo duy nhất.
+
+=> Nếu tất cả các cặp đỉnh liên tiếp trong thứ tự topo đều có cạnh nối giữa chúng hoặc có nhiều thứ tự topo khác nhau, thì đồ thị không có thú tự topo duy nhất.

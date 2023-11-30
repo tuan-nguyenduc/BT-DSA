@@ -1,0 +1,5 @@
+* Một đồ thị vô hướng có V đỉnh có thể có tối đa C(V,2) = (V*(V-1)/2) cạnh vì mỗi cặp đỉnh tạo ra một cạnh. Tuy nhiên, trong trường hợp không có cạnh song song, số cạnh tối đa là V-1.
+
+=> Vì vậy, số lượng cạnh E phải thỏa mãn điều kiện 0 <= E <= V - 1.
+
+* Tổng số đồ thị vô hướng khác nhau có V đỉnh và E cạnh (không có cạnh song song) là: Tổng xích ma từ E=0 đến V-1 của (2^C(V,2))

@@ -1,0 +1,6 @@
+Để tìm cây bao trùm nhỏ nhất của đồ thị G mà chỉ chứa các cạnh trong tập S (Không chứa chu trình), ta có thể dùng thuật toán là biến thể của thuật toán Krushal:
+- Sắp xếp tập cạnh S theo trọng số tăng dần
+- Khởi tạo một Union-Find để theo dõi các thành phần liên thông của đồ thị.
+- Duyệt qua từng cạnh trong tập S, từ cạnh có trọng số nhỏ nhất đến lớn nhất.
+- Thêm cạnh vào cây bao trùm nếu cạnh không tạo chu trình với các cạnh đã được thêm vào cây.
+=> Cây bao trùm thu được là cây bao trùm nhỏ nhất của đồ thị G chứa tất cả các cạnh trong tập S và không chứa chu trình.

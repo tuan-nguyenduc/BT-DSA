@@ -1,0 +1,13 @@
+Thuật toán để giải quyết:
+
+1. Dijkstra Tăng Dần:
+- Sử dụng thuật toán Dijkstra để tìm đường đi ngắn nhất từ đỉnh xuất phát s đến tất cả các đỉnh trên đồ thị sao cho trọng số các cạnh trên đường đi đều tăng dần.
+- Ghi lại kết quả trong một mảng increasing_dist.
+
+2. Dijkstra Giảm Dần:
+- Sử dụng thuật toán Dijkstra để tìm đường đi ngắn nhất từ tất cả các đỉnh đến đỉnh đích t sao cho trọng số các cạnh trên đường đi đều giảm dần.
+- Ghi lại kết quả trong một mảng decreasing_dist.
+
+3. Tìm Đường Đi Bitonic Ngắn Nhất:
+- Với mỗi đỉnh trung gian x nằm giữa s và t, tính tổng của increasing_dist[x] và decreasing_dist[x].
+- Lựa chọn giá trị nhỏ nhất từ tất cả các tổng để có đường đi bitonic ngắn nhất.

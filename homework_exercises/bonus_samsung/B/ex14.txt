@@ -1,0 +1,7 @@
+- Chọn đỉnh xuất phát: Bắt đầu từ bất kì đỉnh nào trong V đỉnh, có V cách chọn
+- Chọn đỉnh tiếp theo: V-1 cách (Trừ đỉnh đã chọn)
+...
+(Tiếp tục đến V đỉnh)
+...
+=> Số đồ thị có hướng phi chu trình chứa V đỉnh là V*(V-1)*(v-2)*...*2*1 = V!
+=> Có V! đồ thị có hướng phi chu trình chứa V đỉnh

@@ -1,0 +1,12 @@
+Chúng ta có thể chứng minh rằng có thể tính các đường đi ngắn nhất trong một đồ thị có hướng với các trọng số không âm tại các đỉnh bằng cách xây dựng một đồ thị có hướng với trọng số cạnh như sau:
+
+1. Giả sử G là một đồ thị có hướng với các trọng số không âm tại các đỉnh, và muốn tính đường đi ngắn nhất từ một đỉnh xuất phát s đến tất cả các đỉnh khác.
+2. Xây dựng một đồ thị có hướng mới G' với trọng số cạnh sao cho đường đi ngắn nhất từ s đến mọi đỉnh trong G cũng là đường đi ngắn nhất trong G':
+    - Với mỗi đỉnh v trong G, thêm một đỉnh mới v' vào G'
+    - Gán trọng số của cạnh giữa v và v' bằng trọng số của đỉnh v trong G
+    - Chuyển đồ thị G' thành đồ thị vô hướng bằng cách thêm các cạnh vô hướng giữa v là v' với trọng số giống với trọng số của cạnh đã thêm
+3. Sau khi thực hiện các bước trên, ta thu được G' có trọng số cạnh vô hướng sao cho đường đi ngắn nhất từ s đến mọi đỉnh trong G cũng là đường đi ngắn nhất trong G'. Vì trong quá trình tính toán đường
+đi ngắn nhất từ s đến v trong G, thuật toán sẽ chọn đỉnh v' nếu nó là đỉnh có trọng số nhỏ nhất, tức là đỉnh v trong G được chọn. Như vậy, ta có thể sử dụng thuật toán
+Dijkstra hoặc Bellman-Ford trên G' để tính đường đi ngắn nhất từ s đến tất cả các đỉnh.
+=> Do đó, chúng ta có thể xây dựng một đồ thị có hướng với trọng số cạnh từ một đồ thị có hướng với trọng số đỉnh và tính toán đường đi ngắn nhất trong nó bằng cách 
+sử dụng thuật toán Dijkstra hoặc Bellman-Ford.

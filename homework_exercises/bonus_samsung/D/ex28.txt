@@ -1,0 +1,13 @@
+Thuật toán để tìm đường đi ngắn nhất giữa 2 tập đỉnh S và T trong mọi đồ thị có hướng với trọng số cạnh dương
+1. Tạo hàng đợi ưu tiên để lưu trữ các đỉnh theo thứ tự tăng dần của khoảng cách từ đỉnh xuất phát
+2. Khởi tạo một mảng khoảng cách (distance) với giá trị vô cùng lớn, ngoại trừ đỉnh thuộc tập S có khoảng cách bằng 0
+3. Đưa tất cả các đỉnh thuộc tập S vào hàng đợi ưu tiên với khoảng cách 0
+4. Nếu queue không rỗng:
+    - Lấy đỉnh u có khoảng cách nhỏ nhất từ queue
+    - Đánh dấu u là đã thăm
+    - Duyệt qua tất cả các đỉnh kề v của u, nếu v chưa được thăm và khoảng cách từ u đến v cộng với khoảng cách hiện tại từ S đến u nhỏ hơn khoảng cách hiện tại từ S đến v: 
+        + Cập nhật khoảng cách từ S đến v.
+        + đưa v vào queue với khoảng cách mới.
+5. Dừng lại gặp đỉnh thuộc tập T trong quá trình lấy đỉnh u từ hàng đợi. Kết quả sẽ là đường đi ngắn nhất từ một đỉnh thuộc S đến một đỉnh thuộc T.
+
+=> Thuật toán sử dụng một hàng đợi ưu tiên để đảm bảo rằng đỉnh nào có khoảng cách nhỏ nhất từ tập S sẽ được xử lý đầu tiên. Điều này giúp giảm độ phức tạp của thuật toán, đảm bảo thời gian chạy tỉ lệ thuận với Elog2V.

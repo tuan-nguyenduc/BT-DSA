@@ -1,0 +1,6 @@
+Xét một đồ thị có hướng có chu trình. Một chu trình là một chuỗi đỉnh, trong đó có một đỉnh xuất hiện ít nhất hai lần. Trong trường hợp này, chu trình có thể làm cho thuật toán không thể đảm bảo thứ tự topo.
+Khi chạy BFS trên đồ thị với chu trình, có thể xảy ra trường hợp một đỉnh đã được đánh dấu theo khoảng cách nhỏ hơn từ đỉnh nguồn của nó, nhưng sau đó, khi đi qua chu trình, đỉnh này lại được đánh dấu với khoảng cách lớn hơn.
+Điều này làm mất đi tính chất tăng dần của khoảng cách từ đỉnh nguồn và làm cho thứ tự topo không còn đúng.
+VD: A->B->C->D->B (1 chu trình)
+Nếu ta chạy BFS trên đồ thị này và đánh dấu đỉnh theo khoảng cách, có thể có trường hợp đỉnh B được đánh dấu là khoảng cách 2 từ đỉnh nguồn tới khi đi qua chu trình trở về B, nó lại được đánh dấu là khoảng cách 3
+=> Điều này làm mất tính chất tăng dần của khoảng cách và làm cho thứ tự topo không chính xác.

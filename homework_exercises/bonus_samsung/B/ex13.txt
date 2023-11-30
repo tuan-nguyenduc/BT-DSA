@@ -1,0 +1,4 @@
+- Để tạo ra một đồ thị có hướng V đỉnh không có cạnh song song, xét mỗi cặp đỉnh i, j với i khác j.
+- Với mỗi cặp đỉnh, có 2 trường hợp: có cạnh từ i đến j hoặc không có cạnh nào.
+- Tổng số cách chọn các cạnh giữa V đỉnh là 2^(V*(V-1))
+=> Tổng số đồ thị có hướng V đỉnh không chứa cạnh song song là 2^(V*(V-1)) * 2 = 2^(V^2) (dpcm)
